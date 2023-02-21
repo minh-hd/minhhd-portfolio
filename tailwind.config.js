@@ -7,6 +7,10 @@ module.exports = {
       secondary: '#E57D6D',
       transparent: '#FFF0',
       white: '#FFF',
+      black: '#121212',
+      midnight: '#232741',
+      'black-transparent': '#121212cc',
+      'black-transparent-backdrop': '#12121266',
     },
     fontSize: {
       xs: '0.75rem',
@@ -47,8 +51,8 @@ module.exports = {
       },
     },
     screens: {
-      sm: '320px',
-      // => @media (min-width: 640px) { ... }
+      sm: '280px',
+      // => @media (min-width: 280px) { ... }
 
       md: '768px',
       // => @media (min-width: 768px) { ... }

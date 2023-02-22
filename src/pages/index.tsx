@@ -4,37 +4,43 @@ import _ from 'lodash';
 import Link from 'next/link';
 import React, { useCallback } from 'react';
 
-import { NextLogo, ReactLogo, TypeScript } from '@/icons';
+import {
+  Facebook,
+  Github,
+  LinkedIn,
+  NextLogo,
+  ReactLogo,
+  TypeScript,
+} from '@/icons';
 import Nest from '@/icons/Nest';
 import { Meta } from '@/layouts/Meta';
 import MeImage from '@/public/assets/images/me.png';
 import styles from '@/styles/index.module.scss';
 import { Main } from '@/templates/Main';
 
+const GREETING_TEXT = "Hello, I'm Hoang Duy Minh 👋";
+
 const Index = () => {
   const setupTypewriter = useCallback(
     _.debounce((t: HTMLElement) => {
-      const { innerHTML: HTML } = t || {};
-
-      if (t) {
-        t.innerHTML = '';
+      if (!t) {
+        return;
       }
 
+      t.innerHTML = '';
       let cursorPosition = 0;
       const typeSpeed = 50;
       let tempTypeSpeed = 0;
 
       const type = () => {
-        if (!HTML) {
-          return;
-        }
-
         tempTypeSpeed =
-          HTML[cursorPosition] === ' ' ? 0 : Math.random() * typeSpeed + 50;
-        t.innerHTML += HTML[cursorPosition];
+          GREETING_TEXT[cursorPosition] === ' '
+            ? 0
+            : Math.random() * typeSpeed + 50;
+        t.innerHTML += GREETING_TEXT[cursorPosition];
 
         cursorPosition += 1;
-        if (cursorPosition < HTML.length) {
+        if (cursorPosition < GREETING_TEXT.length) {
           setTimeout(type, tempTypeSpeed);
         }
       };
@@ -53,7 +59,7 @@ const Index = () => {
         />
       }
     >
-      <div className="mx-10 mb-2 flex rounded-lg lg:mx-24 lg:bg-black-transparent lg:shadow-md">
+      <div className="mx-10 mb-2 flex rounded-lg lg:mx-24">
         <div className="relative hidden h-auto w-1/2 lg:block">
           <img
             className="absolute left-0 h-full w-full object-contain transition-all duration-700 hover:left-10"
@@ -67,18 +73,16 @@ const Index = () => {
             ref={(node) => {
               setupTypewriter(node as HTMLElement);
             }}
-          >
-            Hello, I&apos;m Hoang Duy Minh 👋
-          </div>
+          ></div>
           <h2 className="text-center text-4xl text-gray-400 lg:text-start lg:text-5xl">
             I&apos;m a software engineer and a technology enthusiast 🧑‍💻
           </h2>
           <Link
-            className="mt-4 flex w-60 items-center justify-between rounded-2xl border border-secondary bg-secondary px-5 py-3 outline-secondary transition-colors hover:border-secondary hover:bg-transparent focus:outline-secondary"
+            className="mt-4 flex w-64 items-center justify-between rounded-2xl border border-secondary bg-secondary px-5 py-3 shadow-md outline-secondary transition-colors hover:border-secondary hover:bg-transparent focus:outline-secondary md:w-96"
             href="/about"
           >
             <span className="font-medium text-gray-200 transition-colors group-hover:text-secondary group-active:text-gray-500">
-              Hit me up
+              Want to know more about me?
             </span>
 
             <span className="ml-4 shrink-0 rounded-full border bg-gray-100 p-2 text-secondary group-hover:border-secondary group-hover:bg-transparent group-active:text-gray-500">
@@ -100,27 +104,43 @@ const Index = () => {
           </Link>
         </div>
       </div>
-      <div className="my-16 px-10 lg:mx-14">
+      <div className="mt-16 mb-4 px-10 lg:mx-14">
         <h2 className="mb-6 text-center text-2xl text-gray-200">
           My Current Technology Stack
         </h2>
-        <div className="flex flex-col justify-evenly md:flex-row">
-          <div className="my-2 flex w-full flex-col items-center rounded-sm text-gray-400 md:w-1/5">
-            <ReactLogo className="my-4 h-auto w-1/3 md:w-1/2" />
+        <div className="flex w-full flex-wrap justify-evenly gap-10">
+          <div className="my-2 flex w-1/3 flex-col items-center rounded-sm text-gray-400 md:w-1/5">
+            <ReactLogo className="my-4 h-auto w-1/2 md:w-1/2" />
             <span>React.js</span>
           </div>
-          <div className="my-2 flex w-full flex-col items-center rounded-sm text-gray-400 md:w-1/5">
-            <TypeScript className="my-4 h-auto w-1/3 md:w-1/2" />
+          <div className="my-2 flex w-1/3 flex-col items-center rounded-sm text-gray-400 md:w-1/5">
+            <TypeScript className="my-4 h-auto w-1/2 md:w-1/2" />
             TypeScript
           </div>
-          <div className="my-2 flex w-full flex-col items-center rounded-sm text-gray-400 md:w-1/5">
-            <NextLogo className="my-4 h-auto w-1/3 md:w-1/2" />
+          <div className="my-2 flex w-1/3 flex-col items-center rounded-sm text-gray-400 md:w-1/5">
+            <NextLogo className="my-4 h-auto w-1/2 md:w-1/2" />
             Next.js
           </div>
-          <div className="my-2 flex w-full flex-col items-center rounded-sm text-gray-400 md:w-1/5">
-            <Nest className="my-4 h-auto w-1/3 md:w-1/2" />
+          <div className="my-2 flex w-1/3 flex-col items-center rounded-sm text-gray-400 md:w-1/5">
+            <Nest className="my-4 h-auto w-1/2 md:w-1/2" />
             Nest.js
           </div>
+        </div>
+      </div>
+      <div className="mx-14 mt-16 mb-8 hidden flex-col px-10 md:flex">
+        <h2 className="mb-6 text-center text-2xl text-gray-200">
+          My Social Contacts
+        </h2>
+        <div className="flex w-full justify-between px-40 lg:px-60">
+          <Link href="https://github.com/minh-hd" target="_blank">
+            <Github className="m-auto h-auto w-1/2 fill-white" />
+          </Link>
+          <Link href="https://www.facebook.com/minhhd.1810" target="_blank">
+            <Facebook className="m-auto h-auto w-1/2 fill-white" />
+          </Link>
+          <Link href="https://www.linkedin.com/in/minhhd/" target="_blank">
+            <LinkedIn className="m-auto h-auto w-1/2 fill-white" />
+          </Link>
         </div>
       </div>
     </Main>

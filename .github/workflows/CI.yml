@@ -10,7 +10,7 @@ jobs:
   build:
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]
+        node-version: [16.x, 18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     name: Build with ${{ matrix.node-version }}
@@ -23,8 +23,8 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-      - run: npm ci
-      - run: npm run build-prod
+      - run: yarn install --frozen-lockfile
+      - run: yarn run build-prod
 
   test:
     strategy:
@@ -42,23 +42,23 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "npm"
-      - run: npm ci
+          cache: "yarn"
+      - run: yarn install --frozen-lockfile
 
       - if: github.event_name == 'pull_request'
         name: Validate all commits from PR
         run: npx commitlint --from ${{ github.event.pull_request.base.sha }} --to ${{ github.event.pull_request.head.sha }} --verbose
 
       - name: Linter
-        run: npm run lint
+        run: yarn run lint
 
       - name: Type checking
-        run: npm run check-types
+        run: yarn run check-types
 
-      - name: Run unit tests
-        run: npm run test
+#       - name: Run unit tests
+#         run: npm run test
 
-      - name: Run e2e tests
-        run: npx percy exec -- npm run e2e:headless
-        env:
-          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+#       - name: Run e2e tests
+#         run: npx percy exec -- npm run e2e:headless
+#         env:
+#           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}

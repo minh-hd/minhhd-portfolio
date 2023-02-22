@@ -99,7 +99,7 @@ const Main = (props: IMainProps) => {
                 <li className="mr-6" key={path.href}>
                   <Link
                     href={path.href}
-                    className={`border-none text-gray-200 hover:text-secondary ${
+                    className={`border-none uppercase text-gray-200 hover:text-secondary ${
                       isActivePath(path.href)
                         ? 'text-primary backdrop-saturate-100'
                         : ''
@@ -145,11 +145,7 @@ const Main = (props: IMainProps) => {
             </ul>
             <hr className="my-4" />
             <div className="flex w-full justify-evenly">
-              <Link
-                href="https://github.com/minh-hd"
-                className="fill-white"
-                target="_blank"
-              >
+              <Link href="https://github.com/minh-hd" target="_blank">
                 <Github className="m-auto h-auto w-1/2 fill-white" />
               </Link>
               <Link href="https://www.facebook.com/minhhd.1810" target="_blank">

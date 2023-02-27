@@ -18,6 +18,7 @@ const About = () => (
         name="contact"
         method="POST"
         data-netlify="true"
+        data-netlify-recaptcha="true"
       >
         <input type="hidden" name="form-name" value="contact" />
         <div>
@@ -70,7 +71,7 @@ const About = () => (
             id="message"
           ></textarea>
         </div>
-
+        <div data-netlify-recaptcha="true"></div>
         <div className="mt-4">
           <button
             type="submit"

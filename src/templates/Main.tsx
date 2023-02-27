@@ -167,8 +167,37 @@ const Main = (props: IMainProps) => {
           />
         </main>
 
-        <footer className="border-t border-gray-300 py-8 text-center text-sm text-gray-200">
-          © Copyright {new Date().getFullYear()}. Made with ❤️️ by MinhHD
+        <footer className="border-t border-gray-300 text-gray-200">
+          <div className="mt-6 hidden justify-center px-24 md:flex">
+            <ul className="mt-8 flex justify-start gap-6 sm:mt-0 sm:justify-end">
+              <li className="self-center">
+                <Link href="https://github.com/minh-hd" target="_blank">
+                  <Github className="m-auto h-8 w-auto fill-white" />
+                </Link>
+              </li>
+
+              <li className="self-center">
+                <Link
+                  href="https://www.facebook.com/minhhd.1810"
+                  target="_blank"
+                >
+                  <Facebook className="m-auto h-8 w-auto fill-white" />
+                </Link>
+              </li>
+
+              <li className="self-center">
+                <Link
+                  href="https://www.linkedin.com/in/minhhd/"
+                  target="_blank"
+                >
+                  <LinkedIn className="m-auto h-8 w-auto fill-white" />
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div className="py-4 text-center text-sm">
+            © Copyright {new Date().getFullYear()}. Made with ❤️️ by MinhHD
+          </div>
         </footer>
       </div>
     </div>

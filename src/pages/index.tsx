@@ -4,14 +4,7 @@ import _ from 'lodash';
 import Link from 'next/link';
 import React, { useCallback } from 'react';
 
-import {
-  Facebook,
-  Github,
-  LinkedIn,
-  NextLogo,
-  ReactLogo,
-  TypeScript,
-} from '@/icons';
+import { NextLogo, ReactLogo, TypeScript } from '@/icons';
 import Nest from '@/icons/Nest';
 import { Meta } from '@/layouts/Meta';
 import MeImage from '@/public/assets/images/me.png';
@@ -60,7 +53,7 @@ const Index = () => {
       }
     >
       <div className="mx-10 mb-2 flex rounded-lg lg:mx-24">
-        <div className="relative hidden h-auto w-1/2 lg:block">
+        <div className="relative hidden h-[30rem] w-3/5 lg:block">
           <img
             className="absolute left-0 h-full w-full object-contain transition-all duration-700 hover:left-10"
             src={MeImage.src}
@@ -108,39 +101,23 @@ const Index = () => {
         <h2 className="mb-6 text-center text-2xl text-gray-200">
           My Current Technology Stack
         </h2>
-        <div className="flex w-full flex-wrap justify-evenly gap-10">
-          <div className="my-2 flex w-1/3 flex-col items-center rounded-sm text-gray-400 md:w-1/5">
+        <div className="flex w-full flex-wrap justify-center gap-6">
+          <div className="my-2 flex w-1/3 flex-col items-center rounded-sm text-gray-400 md:w-1/6">
             <ReactLogo className="my-4 h-auto w-1/2 md:w-1/2" />
             <span>React.js</span>
           </div>
-          <div className="my-2 flex w-1/3 flex-col items-center rounded-sm text-gray-400 md:w-1/5">
+          <div className="my-2 flex w-1/3 flex-col items-center rounded-sm text-gray-400 md:w-1/6">
             <TypeScript className="my-4 h-auto w-1/2 md:w-1/2" />
-            TypeScript
+            <span>TypeScript</span>
           </div>
-          <div className="my-2 flex w-1/3 flex-col items-center rounded-sm text-gray-400 md:w-1/5">
+          <div className="my-2 flex w-1/3 flex-col items-center rounded-sm text-gray-400 md:w-1/6">
             <NextLogo className="my-4 h-auto w-1/2 md:w-1/2" />
-            Next.js
+            <span>Next.js</span>
           </div>
-          <div className="my-2 flex w-1/3 flex-col items-center rounded-sm text-gray-400 md:w-1/5">
+          <div className="my-2 flex w-1/3 flex-col items-center rounded-sm text-gray-400 md:w-1/6">
             <Nest className="my-4 h-auto w-1/2 md:w-1/2" />
-            Nest.js
+            <span>Nest.js</span>
           </div>
-        </div>
-      </div>
-      <div className="mx-14 mt-16 mb-8 hidden flex-col px-10 md:flex">
-        <h2 className="mb-6 text-center text-2xl text-gray-200">
-          My Social Contacts
-        </h2>
-        <div className="flex w-full justify-between px-40 lg:px-60">
-          <Link href="https://github.com/minh-hd" target="_blank">
-            <Github className="m-auto h-auto w-1/2 fill-white" />
-          </Link>
-          <Link href="https://www.facebook.com/minhhd.1810" target="_blank">
-            <Facebook className="m-auto h-auto w-1/2 fill-white" />
-          </Link>
-          <Link href="https://www.linkedin.com/in/minhhd/" target="_blank">
-            <LinkedIn className="m-auto h-auto w-1/2 fill-white" />
-          </Link>
         </div>
       </div>
     </Main>
